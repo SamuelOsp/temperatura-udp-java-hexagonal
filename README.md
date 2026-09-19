@@ -2,7 +2,7 @@
 
 Autor: **Samuel David Ospina De Avila** · Sistemas Distribuidos, 2º corte
 
-**▶ Video de sustentación:** _(pendiente: pegar enlace de YouTube)_
+**▶ Video de sustentación:** https://youtu.be/GM3t-wxDVNw
 
 Es el mismo ejercicio del 1er corte (convertir grados **Celsius** a **Fahrenheit**), rehecho con:
 
