@@ -20,7 +20,7 @@ MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto
 p = argparse.ArgumentParser()
 p.add_argument("--repo", default=PENDIENTE)
 p.add_argument("--video", default=PENDIENTE)
-p.add_argument("--universidad", default="Universidad")
+p.add_argument("--universidad", default="")
 p.add_argument("--profesor", default="Ing. John Arrieta")
 p.add_argument("--salida", default=str(Path(__file__).with_name("Entrega.pdf")))
 a = p.parse_args()
@@ -41,7 +41,8 @@ def centrado(y, texto, fuente="Helvetica", tam=12, color=TINTA):
 
 
 # ---------------- Página 1: portada ----------------
-centrado(H - 110, a.universidad.upper(), "Helvetica-Bold", 14)
+if a.universidad:
+    centrado(H - 110, a.universidad.upper(), "Helvetica-Bold", 14)
 centrado(H - 132, "Sistemas Distribuidos", tam=12, color=SUAVE)
 c.setStrokeColor(ACENTO)
 c.setLineWidth(2)
@@ -87,22 +88,6 @@ enlace(y - 60, "Repositorio (GitHub)", a.repo,
        "Código del servidor y del cliente, pruebas, README con capturas y guía de ejecución.")
 enlace(y - 140, "Video de sustentación (YouTube)", a.video,
        "Prueba de la aplicación y explicación del código respecto a UDP y Arquitectura Hexagonal.")
-
-c.setFont("Helvetica-Bold", 13)
-c.setFillColor(TINTA)
-c.drawString(x, y - 230, "Resumen")
-c.setFont("Helvetica", 11)
-c.setFillColor(TINTA)
-lineas = [
-    "El cliente pide una temperatura en grados Celsius y la envía en un datagrama UDP",
-    "(CONVERTIR;valor). El servidor, con un único DatagramSocket, la convierte en su dominio",
-    "(F = C × 9/5 + 32) y responde a la IP y el puerto de origen del paquete (OK_CONVERSION;C;F).",
-    "",
-    "Ambos proyectos siguen la Arquitectura Hexagonal: dominio y casos de uso aislados, con",
-    "puertos de entrada y salida y adaptadores UDP y Swing conectados en el composition root (Main).",
-]
-for i, linea in enumerate(lineas):
-    c.drawString(x, y - 252 - i * 16, linea)
 
 c.showPage()
 c.save()
