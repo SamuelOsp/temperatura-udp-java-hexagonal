@@ -22,6 +22,8 @@ p.add_argument("--repo", default=PENDIENTE)
 p.add_argument("--video", default=PENDIENTE)
 p.add_argument("--universidad", default="Unicolombo")
 p.add_argument("--autor", default="Samuel David Ospina de Ávila")
+p.add_argument("--profesor", default="Ing. John Arrieta")
+p.add_argument("--ciudad", default="Cartagena de Indias, Colombia")
 p.add_argument("--salida", default=str(Path(__file__).with_name("Entrega.pdf")))
 a = p.parse_args()
 
@@ -41,11 +43,23 @@ def centrado(y, texto, fuente="Helvetica", tam=12, color=TINTA):
 
 
 # ---------------- Página 1: portada ----------------
-centrado(H / 2 + 40, a.universidad.upper(), "Helvetica-Bold", 30)
+centrado(H - 100, a.universidad.upper(), "Helvetica-Bold", 22)
+centrado(H - 124, "Sistemas Distribuidos", tam=13, color=SUAVE)
 c.setStrokeColor(ACENTO)
 c.setLineWidth(2)
-c.line(W / 2 - 60, H / 2 + 18, W / 2 + 60, H / 2 + 18)
-centrado(H / 2 - 20, a.autor, "Helvetica-Bold", 18)
+c.line(W / 2 - 60, H - 142, W / 2 + 60, H - 142)
+
+centrado(H / 2 + 90, "Conversión de Temperatura", "Helvetica-Bold", 26)
+centrado(H / 2 + 60, "Cliente-Servidor con UDP/IP y Arquitectura Hexagonal", tam=14)
+centrado(H / 2 + 36, "Ejercicio 3 · Taller del segundo corte", tam=12, color=SUAVE)
+
+centrado(H / 2 - 50, "Presentado por", tam=11, color=SUAVE)
+centrado(H / 2 - 70, a.autor, "Helvetica-Bold", 15)
+centrado(H / 2 - 115, "Presentado a", tam=11, color=SUAVE)
+centrado(H / 2 - 135, a.profesor, "Helvetica-Bold", 13)
+
+centrado(128, a.ciudad, tam=12)
+centrado(110, fecha, tam=11, color=SUAVE)
 c.showPage()
 
 # ---------------- Página 2: enlaces ----------------
