@@ -20,8 +20,8 @@ MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto
 p = argparse.ArgumentParser()
 p.add_argument("--repo", default=PENDIENTE)
 p.add_argument("--video", default=PENDIENTE)
-p.add_argument("--universidad", default="")
-p.add_argument("--profesor", default="Ing. John Arrieta")
+p.add_argument("--universidad", default="Unicolombo")
+p.add_argument("--autor", default="Samuel David Ospina de Ávila")
 p.add_argument("--salida", default=str(Path(__file__).with_name("Entrega.pdf")))
 a = p.parse_args()
 
@@ -31,7 +31,7 @@ TINTA, SUAVE, ACENTO = HexColor("#1B2430"), HexColor("#5B6878"), HexColor("#C98A
 W, H = letter
 c = canvas.Canvas(a.salida, pagesize=letter)
 c.setTitle("Taller UDP y Arquitectura Hexagonal: Samuel David Ospina De Avila")
-c.setAuthor("Samuel David Ospina De Avila")
+c.setAuthor(a.autor)
 
 
 def centrado(y, texto, fuente="Helvetica", tam=12, color=TINTA):
@@ -41,23 +41,11 @@ def centrado(y, texto, fuente="Helvetica", tam=12, color=TINTA):
 
 
 # ---------------- Página 1: portada ----------------
-if a.universidad:
-    centrado(H - 110, a.universidad.upper(), "Helvetica-Bold", 14)
-centrado(H - 132, "Sistemas Distribuidos", tam=12, color=SUAVE)
+centrado(H / 2 + 40, a.universidad.upper(), "Helvetica-Bold", 30)
 c.setStrokeColor(ACENTO)
 c.setLineWidth(2)
-c.line(W / 2 - 60, H - 150, W / 2 + 60, H - 150)
-
-centrado(H / 2 + 90, "Conversión de Temperatura", "Helvetica-Bold", 26)
-centrado(H / 2 + 60, "Cliente-Servidor con UDP/IP y Arquitectura Hexagonal", tam=14)
-centrado(H / 2 + 36, "Ejercicio 3 · Taller del segundo corte", tam=12, color=SUAVE)
-
-centrado(H / 2 - 50, "Presentado por", tam=11, color=SUAVE)
-centrado(H / 2 - 70, "Samuel David Ospina De Avila", "Helvetica-Bold", 15)
-centrado(H / 2 - 115, "Presentado a", tam=11, color=SUAVE)
-centrado(H / 2 - 135, a.profesor, "Helvetica-Bold", 13)
-
-centrado(110, fecha, tam=11, color=SUAVE)
+c.line(W / 2 - 60, H / 2 + 18, W / 2 + 60, H / 2 + 18)
+centrado(H / 2 - 20, a.autor, "Helvetica-Bold", 18)
 c.showPage()
 
 # ---------------- Página 2: enlaces ----------------

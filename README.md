@@ -1,8 +1,10 @@
 # Ejercicio 3: Conversión de temperatura con UDP/IP y Arquitectura Hexagonal
 
-Autor: **Samuel David Ospina De Avila** · Sistemas Distribuidos, 2º corte
+Autor: **Samuel David Ospina de Ávila** · Unicolombo · Sistemas Distribuidos, 2º corte
 
-**▶ Video de sustentación:** https://youtu.be/GM3t-wxDVNw
+## 🎥 Video de sustentación
+
+**▶ [https://youtu.be/GM3t-wxDVNw](https://youtu.be/GM3t-wxDVNw)**
 
 Es el mismo ejercicio del 1er corte (convertir grados **Celsius** a **Fahrenheit**), rehecho con:
 
